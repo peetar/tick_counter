@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjq6r4ythvtl0"]
+
+[ext_resource type="Script" path="res://Guibase.gd" id="1_32r0e"]
+[ext_resource type="AudioStream" uid="uid://cg2ldvs84eoe8" path="res://5990.wav" id="2_r01iv"]
+[ext_resource type="Script" path="res://start.gd" id="3_crobj"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Guibase" type="Polygon2D" parent="."]
+script = ExtResource("1_32r0e")
+
+[node name="tick" type="AudioStreamPlayer2D" parent="Guibase"]
+stream = ExtResource("2_r01iv")
+
+[node name="start" type="Button" parent="Guibase"]
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(2, 2)
+text = "CLICKME"
+script = ExtResource("3_crobj")
+
+[connection signal="finished" from="Guibase/tick" to="Guibase" method="_on_tick_finished"]
+[connection signal="button_down" from="Guibase/start" to="Guibase" method="_on_start_button_down"]
